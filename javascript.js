@@ -46,7 +46,6 @@ function buttonClick(button){
             num1 = value;
         }
 
-        //if two numbers and oper already exist, operate as if equals pressed then shift result into num1
         if(num1 && num2 && oper){
             equals();
         }
@@ -55,14 +54,14 @@ function buttonClick(button){
         value = "";
     }
     else if(classList.contains("equals")){
-        console.log("equals pressed  num1:" + num1 + " num2:" + num2 + " oper:" + oper + "value:" + value);
+        // console.log("equals pressed  num1:" + num1 + " num2:" + num2 + " oper:" + oper + "value:" + value);
         num2 = value;
         if(num1 && num2 && oper){
             equals();
         }
     }
     else if(classList.contains("clear")){
-        console.log("clear called  num1:" + num1 + " num2:" + num2 + " oper:" + oper + " value:" + value);
+        // console.log("clear called  num1:" + num1 + " num2:" + num2 + " oper:" + oper + " value:" + value);
         num1 = "";
         num2 = "";
         oper = "";
@@ -71,7 +70,7 @@ function buttonClick(button){
         value = "";
     }
     else if(classList.contains("clear-entry")){
-        console.log("clear-entry called  num1:" + num1 + " num2:" + num2 + " oper:" + oper + "value:" + value);
+        // console.log("clear-entry called  num1:" + num1 + " num2:" + num2 + " oper:" + oper + "value:" + value);
         value = "0";
         updateDisplay();
         value = "";
@@ -91,12 +90,12 @@ function buttonClick(button){
 }
 
 function equals(){
-    console.log("equals called  num1:" + num1 + " num2:" + num2 + " oper:" + oper);
+    // console.log("equals called  num1:" + num1 + " num2:" + num2 + " oper:" + oper);
     value = operate();
     num1 = value;
     num2 = "";
     oper = "";
-    console.log("value:" + value);
+    // console.log("value:" + value);
     updateDisplay();
     value = "";
 }
