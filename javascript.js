@@ -52,17 +52,29 @@ function buttonClick(button){
         value = "";
     }
     else if(classList.contains("clear")){
-        console.log("clear called  num1:" + num1 + " num2:" + num2 + " oper:" + oper + "value:" + value);
+        console.log("clear called  num1:" + num1 + " num2:" + num2 + " oper:" + oper + " value:" + value);
+        num1 = "";
+        num2 = "";
+        oper = "";
+        value = "0";
+        updateDisplay();
+        value = "";
+    }
+    else if(classList.contains("clear-entry")){
+        console.log("clear-entry called  num1:" + num1 + " num2:" + num2 + " oper:" + oper + "value:" + value);
+        value = "0";
+        updateDisplay();
+        value = "";
     }
 }
 
 function equals(){
-    console.log("equals called  num1:" + num1 + " num2:" + num2 + " oper:" + oper);
+    // console.log("equals called  num1:" + num1 + " num2:" + num2 + " oper:" + oper);
     value = operate();
     num1 = value;
-    num2 = null;
-    oper = null;
-    console.log("value:" + value);
+    num2 = "";
+    oper = "";
+    // console.log("value:" + value);
     updateDisplay();
     value = "";
 }
