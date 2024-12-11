@@ -21,10 +21,20 @@ function buttonClick(button){
     const classList = button.classList;
     // console.log(value + " pressed");
     if(classList.contains("number")){
+        // no leading zeros
+        if(button.value == "0" && value == ""){
+            return;
+        }
+
+        // check for starting with decimal point
+        if(classList.contains("decimal") && value == ""){
+            value = "0";
+        }
         // only allow one deciaml point
         if(classList.contains("decimal") && value.includes(".")){
             return;
         }
+
         value += button.value;
         updateDisplay();
     }
@@ -45,11 +55,11 @@ function buttonClick(button){
         value = "";
     }
     else if(classList.contains("equals")){
+        console.log("equals pressed  num1:" + num1 + " num2:" + num2 + " oper:" + oper + "value:" + value);
         num2 = value;
         if(num1 && num2 && oper){
             equals();
         }
-        value = "";
     }
     else if(classList.contains("clear")){
         console.log("clear called  num1:" + num1 + " num2:" + num2 + " oper:" + oper + " value:" + value);
@@ -66,15 +76,27 @@ function buttonClick(button){
         updateDisplay();
         value = "";
     }
+    else if(classList.contains("delete")){
+        value = value.slice(0, -1);
+        if(value == ""){
+            value = "0";
+            updateDisplay();
+            value = "";
+        }
+        else{
+            updateDisplay();
+        }
+        
+    }
 }
 
 function equals(){
-    // console.log("equals called  num1:" + num1 + " num2:" + num2 + " oper:" + oper);
+    console.log("equals called  num1:" + num1 + " num2:" + num2 + " oper:" + oper);
     value = operate();
     num1 = value;
     num2 = "";
     oper = "";
-    // console.log("value:" + value);
+    console.log("value:" + value);
     updateDisplay();
     value = "";
 }

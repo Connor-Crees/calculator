@@ -44,7 +44,8 @@ button{
 .function{
     background-color: aquamarine;
 }
-.operator{
+.operator,
+.equals{
     background-color: aqua;
 }
 .number{
