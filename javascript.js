@@ -1,7 +1,7 @@
 const buttons = document.querySelectorAll("button");
-let num1 = null;
-let num2 = null;
-let oper = null;
+let num1 = "";
+let num2 = "";
+let oper = "";
 let value = "";
 const display = document.getElementById("display");
 
@@ -29,32 +29,42 @@ function buttonClick(button){
         updateDisplay();
     }
     else if(classList.contains("operator")){
-        num1 = num2;
-        num2 = value;
-        oper = button.value;
-        value = "";
-
-        //if two numbers exist, operate as if equals pressed then shift result into num1
-        if(num1 && num2){
-            equals();
+        if(num1){
+            num2 = value;
         }
-    }
-    else if(classList.contains("equals")){
-        num1 = num2;
-        num2 = value;
-        value = "";
+        else {
+            num1 = value;
+        }
+
+        //if two numbers and oper already exist, operate as if equals pressed then shift result into num1
         if(num1 && num2 && oper){
             equals();
         }
+
+        oper = button.value;
+        value = "";
+    }
+    else if(classList.contains("equals")){
+        num2 = value;
+        if(num1 && num2 && oper){
+            equals();
+        }
+        value = "";
+    }
+    else if(classList.contains("clear")){
+        console.log("clear called  num1:" + num1 + " num2:" + num2 + " oper:" + oper + "value:" + value);
     }
 }
 
 function equals(){
     console.log("equals called  num1:" + num1 + " num2:" + num2 + " oper:" + oper);
     value = operate();
-    num2 = value;
+    num1 = value;
+    num2 = null;
+    oper = null;
     console.log("value:" + value);
     updateDisplay();
+    value = "";
 }
 
 function updateDisplay(){
